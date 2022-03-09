@@ -13,6 +13,7 @@ class Calculator
     end
 
     def divide(a,b)
+      raise 'Cannot divide or be divided by zero' if a == 0 || b == 0
       a / b
     end
 
@@ -20,7 +21,8 @@ class Calculator
       if args.nil? 
         a 
       else
-        raise Error('Invalid arguments') unless args.length == 2
+        raise 'Invalid arguments, calc requires a number and an array containing calculation'\
+              ' symbol and the second number' unless args.length == 2
         Calculator.send(args[0], a, args[1])
       end
     end
